@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher"
+    android:background="@drawable/background"
     tools:context="com.jayar.project.itsmathtime.ItsMathTimeActivity" >
 
     <ImageButton
@@ -12,7 +12,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:contentDescription="@string/start"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/start" />
 
     <ImageButton
         android:id="@+id/score_table_button"
@@ -21,7 +21,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/score"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/score" />
 
     <ImageButton
         android:id="@+id/instructions_button"
@@ -30,6 +30,6 @@
         android:layout_above="@+id/score_table_button"
         android:layout_alignParentLeft="true"
         android:contentDescription="@string/instructions"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/instruction" />
 
 </RelativeLayout>

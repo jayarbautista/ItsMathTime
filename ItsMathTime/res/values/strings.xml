@@ -4,5 +4,9 @@
     <string name="app_name">ItsMathTime</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="start">Start</string>
+    <string name="instructions">Instructions</string>
+    <string name="score">Score</string>
 
 </resources>
