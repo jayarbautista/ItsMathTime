@@ -25,7 +25,7 @@ public class GamePlayFragment extends Fragment {
 	private static int sScore;
 
 	private int level;
-	private static int sDigitCount = 0;
+	private static int sDigitCount = 1;
 
 	TextView mScore;
 	TextView mTimer;
@@ -124,9 +124,9 @@ public class GamePlayFragment extends Fragment {
 					mLevel.setText(level + "");
 
 					sDigitCount += 1;
-					Toast.makeText(getActivity(), "" + sDigitCount,
-							Toast.LENGTH_SHORT).show();
 
+					setOperands();
+					checkOperands();
 					changeOperator();
 					timer.cancel();
 					timer.start();
@@ -143,10 +143,22 @@ public class GamePlayFragment extends Fragment {
 	}
 
 	public static int randomBox() {
-		double total = Math.pow(10, sDigitCount);
+		/*double total = 0.0;
 		Random rand = new Random();
-		int pickedNumber = (int) ((Math.pow(10, (sDigitCount + 1)) - 1) + rand
-				.nextInt((int) total));
+		int pickedNumber = 0;
+		
+		if(sDigitCount == 1) {
+			total = Math.pow(10, 1);
+			pickedNumber = (int) ((Math.pow(10, 0)) - 1 + rand
+					.nextInt((int) (total)));
+		} else {
+			total = (Math.pow(10, sDigitCount)) - 10;
+			pickedNumber = (int) ((Math.pow(10, (sDigitCount-1))) + rand
+					.nextInt((int) (total)));
+		}*/
+		Random rand = new Random();
+		int pickedNumber = rand.nextInt(10);
+		
 		return pickedNumber;
 	}
 
@@ -262,6 +274,7 @@ public class GamePlayFragment extends Fragment {
 			mTimer.setText("Time's up!");
 			mAnswer.setEnabled(false);
 			mSubmit.setEnabled(false);
+			sDigitCount = 0;
 		}
 
 		@Override

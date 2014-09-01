@@ -68,7 +68,7 @@
         android:layout_below="@+id/levellabel"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="50sp" />
+        android:textSize="45sp" />
 
     <TextView
         android:id="@+id/first_operand_view"
@@ -128,7 +128,9 @@
             android:gravity="center"
             android:inputType="number"
             android:hint="@string/answer_here_label"
-            android:textSize="30sp" />
+            android:textSize="30sp" 
+            android:background="#000000"
+            android:textColor="#ffffff"/>
 
         <ImageButton
             android:id="@+id/submit_button"
