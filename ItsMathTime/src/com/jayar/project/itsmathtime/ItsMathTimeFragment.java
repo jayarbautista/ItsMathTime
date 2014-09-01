@@ -1,5 +1,6 @@
 package com.jayar.project.itsmathtime;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +19,14 @@ public class ItsMathTimeFragment extends Fragment {
 		View v = inflater.inflate(R.layout.activity_its_math_time, container, false);
 
 		mStartButton = (ImageButton)v.findViewById(R.id.start_button);
+		mStartButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(getActivity(), GamePlayActivity.class);
+				startActivity(i);
+			}
+		});
+		
 		mInstructionButton = (ImageButton)v.findViewById(R.id.instructions_button);
 		mScoreButton = (ImageButton)v.findViewById(R.id.score_table_button);
 		
