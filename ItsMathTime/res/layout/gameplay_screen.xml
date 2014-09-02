@@ -157,7 +157,7 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/addition" />
+            android:src="@drawable/addition_gray" />
 
         <ImageView
             android:id="@+id/subtract_imageview"
@@ -165,7 +165,7 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/subtraction" />
+            android:src="@drawable/subtraction_gray" />
 
         <ImageView
             android:id="@+id/multiply_imageview"
@@ -173,7 +173,7 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/multiplication" />
+            android:src="@drawable/multiplication_gray" />
 
         <ImageView
             android:id="@+id/divide_imageview"
@@ -181,14 +181,14 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/division" />
+            android:src="@drawable/division_gray" />
 
         <ImageView
             android:id="@+id/mixed_imageview"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:contentDescription="@string/image_desc"
-            android:src="@drawable/mixed" />
+            android:src="@drawable/mixed_gray" />
     </LinearLayout>
 
     <LinearLayout

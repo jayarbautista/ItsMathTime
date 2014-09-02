@@ -50,21 +50,21 @@ public class ModelSingleton {
 	// Sorting Scores in descending order
 	public ArrayList<ModelClass> highScores() {
 
-		ArrayList<ModelClass> tempModelClasses = new ArrayList<ModelClass>();
-		ArrayList<ModelClass> tempModelClasses2 = new ArrayList<ModelClass>();
+		ArrayList<ModelClass> tempModelClass1 = new ArrayList<ModelClass>();
+		ArrayList<ModelClass> tempModelClass2 = new ArrayList<ModelClass>();
 		try {
-			tempModelClasses = mJsonSerializer.loadDetails();
+			tempModelClass1 = mJsonSerializer.loadDetails();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 
-		Collections.sort(tempModelClasses);
+		Collections.sort(tempModelClass1);
 
-		for (ModelClass mC : tempModelClasses) {
-			if (tempModelClasses2.size() > 9)
+		for (ModelClass mC : tempModelClass1) {
+			if (tempModelClass2.size() > 9)
 				break;
-			tempModelClasses2.add(mC);
+			tempModelClass2.add(mC);
 		}
-		return tempModelClasses2;
+		return tempModelClass2;
 	}
 }
