@@ -1,10 +1,13 @@
 package com.jayar.project.itsmathtime;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Random;
 
 import android.os.Bundle;
 =======
+=======
+>>>>>>> issue2
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
@@ -13,7 +16,10 @@ import java.util.Random;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+<<<<<<< HEAD
 >>>>>>> issue3
+=======
+>>>>>>> issue2
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +27,19 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import android.widget.ImageView;
 >>>>>>> issue3
+=======
+import android.widget.ImageView;
+>>>>>>> issue2
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class GamePlayFragment extends Fragment {
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	TextView mScore;
 	TextView mTimer;
@@ -110,6 +121,38 @@ public class GamePlayFragment extends Fragment {
 	ImageView mDots[] = new ImageView[5];
 
 	ImageButton mSubmit;
+=======
+	private static int sAnswer;
+	private static int sDigitCount = 1;
+	
+	private int mCount;
+	private int mOperatorHolder;
+	private int mScoreHolder;
+	private int mLevelHolder;
+
+	private Date mDate;
+
+	private SaveScore mSaveScore;
+
+	private TextView mScore;
+	private TextView mTimer;
+	private TextView mLevel;
+	private static TextView sFirstOperand;
+	private static TextView sSecondOperand;
+	private static TextView mOperator;
+
+	private EditText mAnswer;
+
+	private ImageView mAddView;
+	private ImageView mSubtractView;
+	private ImageView mMultiplyView;
+	private ImageView mDivideView;
+	private ImageView mMixedView;
+
+	private ImageView mDots[] = new ImageView[5];
+
+	private ImageButton mSubmit;
+>>>>>>> issue2
 
 	private static int sDotId[] = { R.id.dot1_imageview, R.id.dot2_imageview,
 			R.id.dot3_imageview, R.id.dot4_imageview, R.id.dot5_imageview };
@@ -121,6 +164,7 @@ public class GamePlayFragment extends Fragment {
 
 		mSaveScore = new SaveScore(getActivity());
 
+<<<<<<< HEAD
 		final TimerCountDown timer = new TimerCountDown(11000, 1000);
 		timer.start();
 
@@ -135,12 +179,27 @@ public class GamePlayFragment extends Fragment {
 
 		mAnswer = (EditText) v.findViewById(R.id.answer_field);
 
+=======
+		final TimerCountDown timer = new TimerCountDown(31000, 1000);
+		timer.start();
+
+		mScore = (TextView) v.findViewById(R.id.score_field);
+		mTimer = (TextView) v.findViewById(R.id.time_field);
+		mLevel = (TextView) v.findViewById(R.id.level);
+		sFirstOperand = (TextView) v.findViewById(R.id.first_operand_view);
+		sSecondOperand = (TextView) v.findViewById(R.id.second_operand_view);
+		mOperator = (TextView) v.findViewById(R.id.operator_view);
+		mAnswer = (EditText) v.findViewById(R.id.answer_field);
+>>>>>>> issue2
 		mAddView = (ImageView) v.findViewById(R.id.add_imageview);
 		mSubtractView = (ImageView) v.findViewById(R.id.subtract_imageview);
 		mMultiplyView = (ImageView) v.findViewById(R.id.multiply_imageview);
 		mDivideView = (ImageView) v.findViewById(R.id.divide_imageview);
 		mMixedView = (ImageView) v.findViewById(R.id.mixed_imageview);
+<<<<<<< HEAD
 
+=======
+>>>>>>> issue2
 		for (int i = 0; i < mDots.length; i++) {
 			mDots[i] = (ImageView) v.findViewById(sDotId[i]);
 		}
@@ -154,6 +213,7 @@ public class GamePlayFragment extends Fragment {
 					Toast.makeText(getActivity(), R.string.answer_toast,
 							Toast.LENGTH_SHORT).show();
 				} else {
+<<<<<<< HEAD
 					answer = Integer.parseInt(mAnswer.getText().toString());
 					if (answer == checkAnswer()) {
 
@@ -173,24 +233,53 @@ public class GamePlayFragment extends Fragment {
 					} else {
 						Toast.makeText(getActivity(),
 								mAnswer.getText() + "Wrong :(" + checkAnswer(),
+=======
+					sAnswer = Integer.parseInt(mAnswer.getText().toString());
+					if (sAnswer == checkAnswer()) {
+
+						changeOperator();
+						setOperands();
+
+						mCount += 1;
+						mScoreHolder += 5;
+						mDots[mCount - 1].setImageResource(R.drawable.correct);
+						mScore.setText(mScoreHolder + "");
+						mAnswer.setText("");
+
+					} else {
+						Toast.makeText(getActivity(), R.string.answer_wrong,
+>>>>>>> issue2
 								Toast.LENGTH_SHORT).show();
 					}
 				}
 
+<<<<<<< HEAD
 				if (sCount == 5) {
 					sCount = 0;
+=======
+				if (mCount == 5) {
+					mCount = 0;
+>>>>>>> issue2
 
 					for (int i = 0; i < 5; i++) {
 						mDots[i].setImageResource(R.drawable.wrong);
 					}
 
+<<<<<<< HEAD
 					level += 1;
 					mLevel.setText(level + "");
+=======
+					mLevelHolder += 1;
+					mLevel.setText(mLevelHolder + "");
+>>>>>>> issue2
 
 					sDigitCount += 1;
 
 					setOperands();
+<<<<<<< HEAD
 					// checkOperands();
+=======
+>>>>>>> issue2
 					changeOperator();
 					timer.cancel();
 					timer.start();
@@ -200,13 +289,17 @@ public class GamePlayFragment extends Fragment {
 
 		onLoad();
 		setOperands();
+<<<<<<< HEAD
 		// checkOperands();
+=======
+>>>>>>> issue2
 		changeOperator();
 
 		return v;
 	}
 
 	public static int randomBox() {
+<<<<<<< HEAD
 		/*
 		 * double total = 0.0; Random rand = new Random(); int pickedNumber = 0;
 		 * 
@@ -217,18 +310,39 @@ public class GamePlayFragment extends Fragment {
 		 */
 		Random rand = new Random();
 		int pickedNumber = rand.nextInt(10);
+=======
+		double total = 0.0;
+		Random rand = new Random();
+		int pickedNumber = 0;
+		
+		if(sDigitCount == 1) {
+			total = Math.pow(10, 1);
+			pickedNumber = (int) ((Math.pow(10, 0)) - 1 + rand
+					.nextInt((int) (total)));
+		} else {
+			total = (Math.pow(10, sDigitCount)) - (Math.pow(10, (sDigitCount-1)));
+			pickedNumber = (int) ((Math.pow(10, (sDigitCount-1))) + rand
+					.nextInt((int) (total)));
+		}
+>>>>>>> issue2
 
 		return pickedNumber;
 	}
 
 	public void setOperands() {
+<<<<<<< HEAD
 		mFirstOperand.setText(randomBox() + "");
 		mSecondOperand.setText(randomBox() + "");
+=======
+		sFirstOperand.setText(randomBox() + "");
+		sSecondOperand.setText(randomBox() + "");
+>>>>>>> issue2
 
 		checkOperands();
 	}
 
 	public void checkOperands() {
+<<<<<<< HEAD
 		int first = Integer.parseInt(mFirstOperand.getText().toString());
 		int second = Integer.parseInt(mSecondOperand.getText().toString());
 
@@ -245,6 +359,30 @@ public class GamePlayFragment extends Fragment {
 
 			if (second != 0) {
 				if (first != ((first / second) * second)) {
+=======
+		int first = Integer.parseInt(sFirstOperand.getText().toString());
+		int second = Integer.parseInt(sSecondOperand.getText().toString());
+
+		if (second > first) {
+			sFirstOperand.setText(second + "");
+			sSecondOperand.setText(first + "");
+		}
+
+		if (mOperator.getText().toString().equals("/")) {
+			Toast.makeText(getActivity(), ""+second, Toast.LENGTH_SHORT).show();
+			
+			if (second > first) {
+				sFirstOperand.setText(second + "");
+				sSecondOperand.setText(first + "");
+			}
+			
+			if (second == 0 || first == 0) {
+				sSecondOperand.setText(randomBox() + "");
+			}
+
+			else {
+				if (((first / second) * second) != first ) {
+>>>>>>> issue2
 					setOperands();
 				}
 			}
@@ -256,7 +394,11 @@ public class GamePlayFragment extends Fragment {
 		mTimer.setText("00:30");
 		mLevel.setText("1");
 
+<<<<<<< HEAD
 		mOperator.setText("+");
+=======
+		mOperator.setText("/");
+>>>>>>> issue2
 	}
 
 	public void randomOperator() {
@@ -275,6 +417,7 @@ public class GamePlayFragment extends Fragment {
 		int firstOperand;
 		int secondOperand;
 
+<<<<<<< HEAD
 		firstOperand = Integer.parseInt(mFirstOperand.getText().toString());
 		secondOperand = Integer.parseInt(mSecondOperand.getText().toString());
 
@@ -288,10 +431,26 @@ public class GamePlayFragment extends Fragment {
 			answer = firstOperand / secondOperand;
 
 		return answer;
+=======
+		firstOperand = Integer.parseInt(sFirstOperand.getText().toString());
+		secondOperand = Integer.parseInt(sSecondOperand.getText().toString());
+
+		if (mOperator.getText().toString().equals("+"))
+			sAnswer = firstOperand + secondOperand;
+		else if (mOperator.getText().toString().equals("-"))
+			sAnswer = firstOperand - secondOperand;
+		else if (mOperator.getText().toString().equals("*"))
+			sAnswer = firstOperand * secondOperand;
+		else if (mOperator.getText().toString().equals("/"))
+			sAnswer = firstOperand / secondOperand;
+
+		return sAnswer;
+>>>>>>> issue2
 	}
 
 	public void changeOperator() {
 
+<<<<<<< HEAD
 		level = Integer.parseInt(mLevel.getText().toString());
 
 		sOperator = level % 10;
@@ -328,6 +487,72 @@ public class GamePlayFragment extends Fragment {
 			break;
 		}
 	}
+=======
+		mLevelHolder = Integer.parseInt(mLevel.getText().toString());
+
+		mOperatorHolder = mLevelHolder % 10;
+		switch (mOperatorHolder) {
+		case 1:
+			mOperator.setText("/");
+			resetColor();
+			mAddView.setImageResource(R.drawable.addition);
+			break;
+		case 2:
+			mOperator.setText("-");
+			resetColor();
+			mSubtractView.setImageResource(R.drawable.subtraction);
+			break;
+		case 3:
+			mOperator.setText("*");
+			resetColor();
+			mMultiplyView.setImageResource(R.drawable.multiplication);
+			break;
+		case 4:
+			mOperator.setText("/");
+			resetColor();
+			mDivideView.setImageResource(R.drawable.division);
+			break;
+		case 5:
+			randomOperator();
+			resetColor();
+			mMixedView.setImageResource(R.drawable.mixed);
+			break;
+		case 6:
+			mOperator.setText("+");
+			resetColor();
+			mAddView.setImageResource(R.drawable.addition);
+			break;
+		case 7:
+			mOperator.setText("-");
+			resetColor();
+			mSubtractView.setImageResource(R.drawable.subtraction);
+			break;
+		case 8:
+			mOperator.setText("*");
+			resetColor();
+			mMultiplyView.setImageResource(R.drawable.multiplication);
+			break;
+		case 9:
+			mOperator.setText("/");
+			resetColor();
+			mDivideView.setImageResource(R.drawable.division);
+			break;
+		case 0:
+			randomOperator();
+			resetColor();
+			mMixedView.setImageResource(R.drawable.mixed);
+			break;
+		}
+	}
+	
+	public void resetColor() {
+		mAddView.setImageResource(R.drawable.addition_gray);
+		mSubtractView.setImageResource(R.drawable.subtraction_gray);
+		mMultiplyView.setImageResource(R.drawable.multiplication_gray);
+		mDivideView.setImageResource(R.drawable.division_gray);
+		mMixedView.setImageResource(R.drawable.mixed_gray);
+	}
+>>>>>>> issue2
 
 	public class TimerCountDown extends CountDownTimer {
 		public TimerCountDown(long startTime, long interval) {
@@ -340,6 +565,7 @@ public class GamePlayFragment extends Fragment {
 			mAnswer.setEnabled(false);
 			mSubmit.setEnabled(false);
 			sDigitCount = 0;
+<<<<<<< HEAD
 			
 			mDate = new Date();
 			Toast.makeText(getActivity(),
@@ -355,6 +581,15 @@ public class GamePlayFragment extends Fragment {
 							" not saved",
 							Toast.LENGTH_SHORT).show();
 				}
+=======
+
+			mDate = new Date();
+
+			try {
+				mSaveScore.saveScore(mScoreHolder, mLevelHolder, mDate);
+			} catch (Exception e) {
+				e.printStackTrace();
+>>>>>>> issue2
 			}
 		}
 
@@ -362,7 +597,10 @@ public class GamePlayFragment extends Fragment {
 		public void onTick(long millisUntilFinished) {
 			mTimer.setText("00:" + millisUntilFinished / 1000);
 		}
+<<<<<<< HEAD
 >>>>>>> issue3
+=======
+>>>>>>> issue2
 	}
 
 }

@@ -4,11 +4,16 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true"
 <<<<<<< HEAD
+<<<<<<< HEAD
     android:orientation="vertical" >
 =======
     android:orientation="vertical" 
     android:background="@drawable/gamebg">
 >>>>>>> issue3
+=======
+    android:orientation="vertical" 
+    android:background="@drawable/gamebg">
+>>>>>>> issue2
 
     <TextView
         android:id="@+id/score_field"
@@ -73,10 +78,14 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
 <<<<<<< HEAD
+<<<<<<< HEAD
         android:textSize="50sp" />
 =======
         android:textSize="45sp" />
 >>>>>>> issue3
+=======
+        android:textSize="45sp" />
+>>>>>>> issue2
 
     <TextView
         android:id="@+id/first_operand_view"
@@ -137,12 +146,18 @@
             android:inputType="number"
             android:hint="@string/answer_here_label"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:textSize="30sp" />
 =======
             android:textSize="30sp" 
             android:background="#000000"
             android:textColor="#ffffff"/>
 >>>>>>> issue3
+=======
+            android:textSize="30sp" 
+            android:background="#000000"
+            android:textColor="#ffffff"/>
+>>>>>>> issue2
 
         <ImageButton
             android:id="@+id/submit_button"
@@ -169,7 +184,11 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
+<<<<<<< HEAD
             android:src="@drawable/addition" />
+=======
+            android:src="@drawable/addition_gray" />
+>>>>>>> issue2
 
         <ImageView
             android:id="@+id/subtract_imageview"
@@ -177,7 +196,11 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
+<<<<<<< HEAD
             android:src="@drawable/subtraction" />
+=======
+            android:src="@drawable/subtraction_gray" />
+>>>>>>> issue2
 
         <ImageView
             android:id="@+id/multiply_imageview"
@@ -185,7 +208,11 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
+<<<<<<< HEAD
             android:src="@drawable/multiplication" />
+=======
+            android:src="@drawable/multiplication_gray" />
+>>>>>>> issue2
 
         <ImageView
             android:id="@+id/divide_imageview"
@@ -193,14 +220,22 @@
             android:layout_height="60dp"
             android:layout_marginRight="3dp"
             android:contentDescription="@string/image_desc"
+<<<<<<< HEAD
             android:src="@drawable/division" />
+=======
+            android:src="@drawable/division_gray" />
+>>>>>>> issue2
 
         <ImageView
             android:id="@+id/mixed_imageview"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:contentDescription="@string/image_desc"
+<<<<<<< HEAD
             android:src="@drawable/mixed" />
+=======
+            android:src="@drawable/mixed_gray" />
+>>>>>>> issue2
     </LinearLayout>
 
     <LinearLayout
