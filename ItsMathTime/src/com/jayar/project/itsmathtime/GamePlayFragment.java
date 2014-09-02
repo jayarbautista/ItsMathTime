@@ -1,6 +1,7 @@
 package com.jayar.project.itsmathtime;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -25,7 +26,11 @@ public class GamePlayFragment extends Fragment {
 	private static int sScore;
 
 	private int level;
-	private static int sDigitCount = 1;
+	static int sDigitCount = 1;
+
+	Date mDate;
+
+	private SaveScore mSaveScore;
 
 	TextView mScore;
 	TextView mTimer;
@@ -54,28 +59,23 @@ public class GamePlayFragment extends Fragment {
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.gameplay_screen, container, false);
 
-		// sTime = Integer.parseInt(mTimer.getText().toString());
+		mSaveScore = new SaveScore(getActivity());
 
 		final TimerCountDown timer = new TimerCountDown(31000, 1000);
 		timer.start();
 
 		mScore = (TextView) v.findViewById(R.id.score_field);
-
 		mTimer = (TextView) v.findViewById(R.id.time_field);
-
 		mLevel = (TextView) v.findViewById(R.id.level);
 		mFirstOperand = (TextView) v.findViewById(R.id.first_operand_view);
 		mSecondOperand = (TextView) v.findViewById(R.id.second_operand_view);
 		mOperator = (TextView) v.findViewById(R.id.operator_view);
-
 		mAnswer = (EditText) v.findViewById(R.id.answer_field);
-
 		mAddView = (ImageView) v.findViewById(R.id.add_imageview);
 		mSubtractView = (ImageView) v.findViewById(R.id.subtract_imageview);
 		mMultiplyView = (ImageView) v.findViewById(R.id.multiply_imageview);
 		mDivideView = (ImageView) v.findViewById(R.id.divide_imageview);
 		mMixedView = (ImageView) v.findViewById(R.id.mixed_imageview);
-
 		for (int i = 0; i < mDots.length; i++) {
 			mDots[i] = (ImageView) v.findViewById(sDotId[i]);
 		}
@@ -92,23 +92,17 @@ public class GamePlayFragment extends Fragment {
 					answer = Integer.parseInt(mAnswer.getText().toString());
 					if (answer == checkAnswer()) {
 
-						Toast.makeText(getActivity(), "Correct :)",
-								Toast.LENGTH_LONG).show();
-
-						// mFirstOperand.setText(randomBox() + "");
-						// mSecondOperand.setText(randomBox() + "");
 						changeOperator();
 						setOperands();
-						checkOperands();
 
 						sCount += 1;
 						sScore += 5;
 						mDots[sCount - 1].setImageResource(R.drawable.correct);
 						mScore.setText(sScore + "");
 						mAnswer.setText("");
+
 					} else {
-						Toast.makeText(getActivity(),
-								mAnswer.getText() + "Wrong :(" + checkAnswer(),
+						Toast.makeText(getActivity(), R.string.answer_wrong,
 								Toast.LENGTH_SHORT).show();
 					}
 				}
@@ -123,10 +117,9 @@ public class GamePlayFragment extends Fragment {
 					level += 1;
 					mLevel.setText(level + "");
 
-					sDigitCount += 1;
+					//sDigitCount += 1;
 
 					setOperands();
-					checkOperands();
 					changeOperator();
 					timer.cancel();
 					timer.start();
@@ -136,14 +129,13 @@ public class GamePlayFragment extends Fragment {
 
 		onLoad();
 		setOperands();
-		checkOperands();
 		changeOperator();
 
 		return v;
 	}
 
 	public static int randomBox() {
-		/*double total = 0.0;
+		double total = 0.0;
 		Random rand = new Random();
 		int pickedNumber = 0;
 		
@@ -152,19 +144,19 @@ public class GamePlayFragment extends Fragment {
 			pickedNumber = (int) ((Math.pow(10, 0)) - 1 + rand
 					.nextInt((int) (total)));
 		} else {
-			total = (Math.pow(10, sDigitCount)) - 10;
+			total = (Math.pow(10, sDigitCount)) - (Math.pow(10, (sDigitCount-1)));
 			pickedNumber = (int) ((Math.pow(10, (sDigitCount-1))) + rand
 					.nextInt((int) (total)));
-		}*/
-		Random rand = new Random();
-		int pickedNumber = rand.nextInt(10);
-		
+		}
+
 		return pickedNumber;
 	}
 
 	public void setOperands() {
 		mFirstOperand.setText(randomBox() + "");
 		mSecondOperand.setText(randomBox() + "");
+
+		checkOperands();
 	}
 
 	public void checkOperands() {
@@ -172,13 +164,17 @@ public class GamePlayFragment extends Fragment {
 		int second = Integer.parseInt(mSecondOperand.getText().toString());
 
 		if (second > first) {
-			setOperands();
+			mFirstOperand.setText(second + "");
+			mSecondOperand.setText(first + "");
 		}
 
 		if (mOperator.getText().toString().equals("/")) {
-			if (second == 0)
-				setOperands();
-			else {
+
+			if (second == 0) {
+				mSecondOperand.setText(randomBox() + "");
+			}
+
+			if (second != 0) {
 				if (first != ((first / second) * second)) {
 					setOperands();
 				}
@@ -275,6 +271,16 @@ public class GamePlayFragment extends Fragment {
 			mAnswer.setEnabled(false);
 			mSubmit.setEnabled(false);
 			sDigitCount = 0;
+
+			mDate = new Date();
+
+			if (sScore != 0) {
+				try {
+					mSaveScore.saveScore(sScore, level, mDate);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 		@Override
