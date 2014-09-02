@@ -8,7 +8,10 @@ import android.support.v4.app.FragmentManager;
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
     protected abstract Fragment createFragment();
+<<<<<<< HEAD
 
+=======
+>>>>>>> issue3
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

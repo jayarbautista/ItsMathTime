@@ -3,7 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
+<<<<<<< HEAD
     android:orientation="vertical" >
+=======
+    android:orientation="vertical" 
+    android:background="@drawable/gamebg">
+>>>>>>> issue3
 
     <TextView
         android:id="@+id/score_field"
@@ -67,7 +72,11 @@
         android:layout_below="@+id/levellabel"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+<<<<<<< HEAD
         android:textSize="50sp" />
+=======
+        android:textSize="45sp" />
+>>>>>>> issue3
 
     <TextView
         android:id="@+id/first_operand_view"
@@ -127,7 +136,13 @@
             android:gravity="center"
             android:inputType="number"
             android:hint="@string/answer_here_label"
+<<<<<<< HEAD
             android:textSize="30sp" />
+=======
+            android:textSize="30sp" 
+            android:background="#000000"
+            android:textColor="#ffffff"/>
+>>>>>>> issue3
 
         <ImageButton
             android:id="@+id/submit_button"
