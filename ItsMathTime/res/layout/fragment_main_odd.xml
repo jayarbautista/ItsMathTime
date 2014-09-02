@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+<<<<<<< HEAD
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" 
+    android:layout_marginTop="40dp">
+=======
+    android:layout_marginTop="40dp"
+    android:gravity="center_horizontal"
+    android:keepScreenOn="true"
+    android:orientation="horizontal" >
+>>>>>>> issue2
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:shadowColor="#000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/level"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="#000000"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:shadowColor="#000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:shadowColor="#000000"
+        android:shadowDx="3"
+        android:shadowDy="3"
+        android:shadowRadius="2"
+        android:textColor="#ffffff"
+        android:textSize="15sp" />
+
+</LinearLayout>
