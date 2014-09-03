@@ -17,7 +17,6 @@ public class ModelClass implements Serializable, Comparable<ModelClass> {
 	private String mLevel;
 	private Date mDate;
 
-	// thinking of using static factory instead
 	public ModelClass() {
 		// used for initialization
 	}

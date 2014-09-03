@@ -8,5 +8,4 @@ public class GamePlayActivity extends SingleFragmentActivity {
 	protected Fragment createFragment() {
 		return new GamePlayFragment();
 	}
-
 }

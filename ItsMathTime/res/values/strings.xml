@@ -14,9 +14,8 @@
     <string name="equal_sign">=</string>
     <string name="answer_here_label">Answer Here</string>
     <string name="answer_toast">Input your Answer</string>
-<<<<<<< HEAD
-=======
     <string name="answer_wrong">Wrong Answer.</string>
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> issue2
     
@@ -24,5 +23,11 @@
     <string name="game_over_message">Game Over</string>
     <string name="ok">OK</string>
 >>>>>>> issue2
+=======
+    <string name="game_over_message">Game Over</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="tap">(Tap to answer)</string>
+>>>>>>> issue4
 
 </resources>
