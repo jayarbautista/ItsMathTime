@@ -28,12 +28,16 @@ public class ItsMathTimeFragment extends Fragment {
 		});
 		
 		mInstructionButton = (ImageButton)v.findViewById(R.id.instructions_button);
+		mInstructionButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent i = new Intent(getActivity(), InstructionsActivity.class);
+				startActivity(i);
+			}
+		});
+
 		mScoreButton = (ImageButton)v.findViewById(R.id.score_table_button);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> issue2
 		mScoreButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -42,10 +46,6 @@ public class ItsMathTimeFragment extends Fragment {
 				startActivity(i);
 			}
 		});
-<<<<<<< HEAD
->>>>>>> issue3
-=======
->>>>>>> issue2
 		
 		return v;
 	}

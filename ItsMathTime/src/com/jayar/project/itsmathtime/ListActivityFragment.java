@@ -3,14 +3,17 @@ package com.jayar.project.itsmathtime;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class ListActivityFragment extends android.support.v4.app.ListFragment {
+public class ListActivityFragment extends ListFragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,9 @@ public class ListActivityFragment extends android.support.v4.app.ListFragment {
 		}
 
 		ForListAdapter adapter = new ForListAdapter(mModelClass);
+		//if(adapter.getCount() > 5) {
+			//adapter.notifyDataSetChanged();
+		//}
 		setListAdapter(adapter);
 	}
 
