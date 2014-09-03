@@ -19,6 +19,7 @@
     <string name="game_over_message">Game Over</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="record">No Records Yet</string>
     <string name="tap">(Tap to answer)</string>
 
 </resources>

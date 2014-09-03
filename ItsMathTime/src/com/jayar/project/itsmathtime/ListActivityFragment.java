@@ -3,7 +3,6 @@ package com.jayar.project.itsmathtime;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -32,16 +31,22 @@ public class ListActivityFragment extends ListFragment {
 
 		ForListAdapter adapter = new ForListAdapter(mModelClass);
 		if (adapter.getCount() == 0) {
-			Toast.makeText(getActivity(), "No records yet.", Toast.LENGTH_LONG)
+			Toast.makeText(getActivity(),R.string.record, Toast.LENGTH_LONG)
 					.show();
 		}
 		setListAdapter(adapter);
 	}
 
 	private class ForListAdapter extends ArrayAdapter<ModelClass> {
-
+		private int maxcount = 5;
+		
 		public ForListAdapter(ArrayList<ModelClass> modelClasses) {
 			super(getActivity(), 0, modelClasses);
+		}
+
+		@Override
+		public int getCount() {
+			return Math.min(maxcount, super.getCount());
 		}
 
 		@SuppressLint("SimpleDateFormat")
