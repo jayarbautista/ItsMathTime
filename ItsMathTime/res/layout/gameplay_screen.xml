@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:keepScreenOn="true"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/gamebg">
 
     <RelativeLayout
         android:id="@+id/rel1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" >
+        android:layout_marginRight="10dp" 
+        android:background="#009DFE">
 
         <TextView
             android:id="@+id/scorelabel"
@@ -19,7 +21,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
-            android:text="@string/score_label" />
+            android:text="@string/score_label"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timelabel"
@@ -28,7 +31,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
-            android:text="@string/time_label" />
+            android:text="@string/time_label"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/levellabel"
@@ -36,7 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="@string/level_label" />
+            android:text="@string/level_label"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -75,7 +81,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:gravity="center_horizontal"
-            android:textColor="#ffffff"
+            android:textColor="#D40808"
             android:textSize="20sp" />
     </RelativeLayout>
 
@@ -86,7 +92,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/rel2"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:background="#000000"
         android:gravity="center_vertical|center_horizontal" >
 
@@ -136,7 +142,7 @@
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="#000000"
         android:gravity="center_vertical|center_horizontal" >
 
@@ -187,7 +193,7 @@
         android:layout_alignLeft="@+id/rel2"
         android:layout_alignRight="@+id/rel2"
         android:layout_below="@+id/linearLayout2"
-        android:layout_marginTop="16dp" >
+        android:layout_marginTop="13dp" >
 
         <TextView
             android:id="@+id/first_operand_view"
@@ -199,7 +205,8 @@
             android:background="#000000"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/operator_view"
@@ -210,7 +217,7 @@
             android:background="#aaaaaa"
             android:gravity="center_horizontal|center_vertical"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:textSize="50sp" />
 
         <TextView
@@ -223,7 +230,9 @@
             android:background="#000000"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <RelativeLayout

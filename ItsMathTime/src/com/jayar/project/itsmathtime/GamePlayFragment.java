@@ -36,7 +36,7 @@ public class GamePlayFragment extends Fragment {
 	private SaveScore mSaveScore;
 
 	private TextView mScore;
-	private TextView mTimer;
+	private TextView mTimerView;
 	private TextView mLevel;
 	private static TextView sFirstOperand;
 	private static TextView sSecondOperand;
@@ -54,7 +54,7 @@ public class GamePlayFragment extends Fragment {
 
 	private ImageButton mSubmit;
 
-	TimerCountDown timer;
+	private TimerCountDown mTimer;
 
 	private static int sDotId[] = { R.id.dot1_imageview, R.id.dot2_imageview,
 			R.id.dot3_imageview, R.id.dot4_imageview, R.id.dot5_imageview };
@@ -66,11 +66,11 @@ public class GamePlayFragment extends Fragment {
 
 		mSaveScore = new SaveScore(getActivity());
 
-		timer = new TimerCountDown(31000, 1000);
-		//timer.start();
+		mTimer = new TimerCountDown(31000, 1000);
+		mTimer.start();
 
 		mScore = (TextView) v.findViewById(R.id.score_field);
-		mTimer = (TextView) v.findViewById(R.id.time_field);
+		mTimerView = (TextView) v.findViewById(R.id.time_field);
 		mLevel = (TextView) v.findViewById(R.id.level_field);
 		sFirstOperand = (TextView) v.findViewById(R.id.first_operand_view);
 		sSecondOperand = (TextView) v.findViewById(R.id.second_operand_view);
@@ -113,7 +113,6 @@ public class GamePlayFragment extends Fragment {
 				}
 
 				if (mCount == 5) {
-					mCount = 0;
 
 					for (int i = 0; i < 5; i++) {
 						mDots[i].setImageResource(R.drawable.wrong);
@@ -122,12 +121,16 @@ public class GamePlayFragment extends Fragment {
 					mLevelHolder += 1;
 					mLevel.setText(mLevelHolder + "");
 
-					sDigitCount += 1;
-
 					setOperands();
 					changeOperator();
-					timer.cancel();
-					timer.start();
+					mTimer.cancel();
+					mTimer.start();
+					mCount = 0;
+				}
+				
+				if ((mLevelHolder % 5 == 1) && (mCount == 0)) {
+					sDigitCount += 1;
+					setOperands();
 				}
 			}
 		});
@@ -141,11 +144,11 @@ public class GamePlayFragment extends Fragment {
 	@Override
 	public void onDetach() {
 		super.onDetach();
-		timer.cancel();
+		mTimer.cancel();
 		sDigitCount = 1;
 	}
 
-	public static int randomBox() {
+	public static int randomOperands() {
 		double total = 0.0;
 		Random rand = new Random();
 		int pickedNumber = 0;
@@ -165,8 +168,8 @@ public class GamePlayFragment extends Fragment {
 	}
 
 	public void setOperands() {
-		sFirstOperand.setText(randomBox() + "");
-		sSecondOperand.setText(randomBox() + "");
+		sFirstOperand.setText(randomOperands() + "");
+		sSecondOperand.setText(randomOperands() + "");
 
 		checkOperands();
 	}
@@ -195,7 +198,7 @@ public class GamePlayFragment extends Fragment {
 
 	public void onLoad() {
 		mScore.setText("0");
-		mTimer.setText("00:30");
+		mTimerView.setText("00:30");
 		mLevel.setText("1");
 
 		mAddView.setImageResource(R.drawable.addition);
@@ -321,7 +324,7 @@ public class GamePlayFragment extends Fragment {
 
 		@Override
 		public void onFinish() {
-			mTimer.setText("Time's up!");
+			mTimerView.setText("Time's up!");
 			mAnswer.setEnabled(false);
 			mSubmit.setEnabled(false);
 			sDigitCount = 1;
@@ -339,7 +342,7 @@ public class GamePlayFragment extends Fragment {
 
 		@Override
 		public void onTick(long millisUntilFinished) {
-			mTimer.setText("00:" + millisUntilFinished / 1000);
+			mTimerView.setText("00:" + millisUntilFinished / 1000);
 		}
 	}
 }
