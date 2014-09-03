@@ -294,6 +294,8 @@ public class GamePlayFragment extends Fragment {
 			mMixedView.setImageResource(R.drawable.mixed);
 			break;
 		}
+
+		checkOperands();
 	}
 
 	public void resetColor() {
