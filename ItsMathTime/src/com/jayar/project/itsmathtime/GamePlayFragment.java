@@ -14,6 +14,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 <<<<<<< HEAD
@@ -558,6 +561,22 @@ public class GamePlayFragment extends Fragment {
 		mDivideView.setImageResource(R.drawable.division_gray);
 		mMixedView.setImageResource(R.drawable.mixed_gray);
 	}
+<<<<<<< HEAD
+>>>>>>> issue2
+=======
+	
+	public void alertGameOver() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(R.string.game_over_message)
+               .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       Intent i = new Intent(getActivity(), ItsMathTimeActivity.class);
+                       startActivity(i);
+                   }
+               })
+               .setCancelable(false)
+               .show();
+	}
 >>>>>>> issue2
 
 	public class TimerCountDown extends CountDownTimer {
@@ -601,6 +620,8 @@ public class GamePlayFragment extends Fragment {
 				e.printStackTrace();
 >>>>>>> issue2
 			}
+			
+			alertGameOver();
 		}
 
 		@Override
@@ -612,5 +633,4 @@ public class GamePlayFragment extends Fragment {
 =======
 >>>>>>> issue2
 	}
-
 }
