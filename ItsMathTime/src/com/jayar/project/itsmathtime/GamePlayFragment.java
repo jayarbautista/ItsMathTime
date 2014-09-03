@@ -38,9 +38,9 @@ public class GamePlayFragment extends Fragment {
 	private TextView mScore;
 	private TextView mTimerView;
 	private TextView mLevel;
-	private static TextView sFirstOperand;
-	private static TextView sSecondOperand;
-	private static TextView sOperator;
+	private TextView mFirstOperand;
+	private TextView mSecondOperand;
+	private TextView mOperator;
 
 	private EditText mAnswer;
 
@@ -72,9 +72,9 @@ public class GamePlayFragment extends Fragment {
 		mScore = (TextView) v.findViewById(R.id.score_field);
 		mTimerView = (TextView) v.findViewById(R.id.time_field);
 		mLevel = (TextView) v.findViewById(R.id.level_field);
-		sFirstOperand = (TextView) v.findViewById(R.id.first_operand_view);
-		sSecondOperand = (TextView) v.findViewById(R.id.second_operand_view);
-		sOperator = (TextView) v.findViewById(R.id.operator_view);
+		mFirstOperand = (TextView) v.findViewById(R.id.first_operand_view);
+		mSecondOperand = (TextView) v.findViewById(R.id.second_operand_view);
+		mOperator = (TextView) v.findViewById(R.id.operator_view);
 		mAnswer = (EditText) v.findViewById(R.id.answer_field);
 		mAddView = (ImageView) v.findViewById(R.id.add_imageview);
 		mSubtractView = (ImageView) v.findViewById(R.id.subtract_imageview);
@@ -168,22 +168,22 @@ public class GamePlayFragment extends Fragment {
 	}
 
 	public void setOperands() {
-		sFirstOperand.setText(randomOperands() + "");
-		sSecondOperand.setText(randomOperands() + "");
+		mFirstOperand.setText(randomOperands() + "");
+		mSecondOperand.setText(randomOperands() + "");
 
 		checkOperands();
 	}
 
 	public void checkOperands() {
-		int first = Integer.parseInt(sFirstOperand.getText().toString());
-		int second = Integer.parseInt(sSecondOperand.getText().toString());
+		int first = Integer.parseInt(mFirstOperand.getText().toString());
+		int second = Integer.parseInt(mSecondOperand.getText().toString());
 
 		if (second > first) {
-			sFirstOperand.setText(second + "");
-			sSecondOperand.setText(first + "");
+			mFirstOperand.setText(second + "");
+			mSecondOperand.setText(first + "");
 		}
 
-		if (sOperator.getText().toString().equals("/")) {
+		if (mOperator.getText().toString().equals("/")) {
 			if (second == 0 || first == 0) {
 				setOperands();
 			}
@@ -203,7 +203,7 @@ public class GamePlayFragment extends Fragment {
 
 		mAddView.setImageResource(R.drawable.addition);
 
-		sOperator.setText("+");
+		mOperator.setText("+");
 	}
 
 	public void randomOperator() {
@@ -214,24 +214,24 @@ public class GamePlayFragment extends Fragment {
 
 			Collections.shuffle(arrayList);
 
-			sOperator.setText("" + arrayList.get(0));
+			mOperator.setText("" + arrayList.get(0));
 		}
 	}
 
-	public static int checkAnswer() {
+	public int checkAnswer() {
 		int firstOperand;
 		int secondOperand;
 
-		firstOperand = Integer.parseInt(sFirstOperand.getText().toString());
-		secondOperand = Integer.parseInt(sSecondOperand.getText().toString());
+		firstOperand = Integer.parseInt(mFirstOperand.getText().toString());
+		secondOperand = Integer.parseInt(mSecondOperand.getText().toString());
 
-		if (sOperator.getText().toString().equals("+"))
+		if (mOperator.getText().toString().equals("+"))
 			sAnswer = firstOperand + secondOperand;
-		else if (sOperator.getText().toString().equals("-"))
+		else if (mOperator.getText().toString().equals("-"))
 			sAnswer = firstOperand - secondOperand;
-		else if (sOperator.getText().toString().equals("*"))
+		else if (mOperator.getText().toString().equals("*"))
 			sAnswer = firstOperand * secondOperand;
-		else if (sOperator.getText().toString().equals("/"))
+		else if (mOperator.getText().toString().equals("/"))
 			sAnswer = firstOperand / secondOperand;
 
 		return sAnswer;
@@ -244,22 +244,22 @@ public class GamePlayFragment extends Fragment {
 		mOperatorHolder = mLevelHolder % 10;
 		switch (mOperatorHolder) {
 		case 1:
-			sOperator.setText("+");
+			mOperator.setText("+");
 			resetColor();
 			mAddView.setImageResource(R.drawable.addition);
 			break;
 		case 2:
-			sOperator.setText("-");
+			mOperator.setText("-");
 			resetColor();
 			mSubtractView.setImageResource(R.drawable.subtraction);
 			break;
 		case 3:
-			sOperator.setText("*");
+			mOperator.setText("*");
 			resetColor();
 			mMultiplyView.setImageResource(R.drawable.multiplication);
 			break;
 		case 4:
-			sOperator.setText("/");
+			mOperator.setText("/");
 			resetColor();
 			mDivideView.setImageResource(R.drawable.division);
 			break;
@@ -269,22 +269,22 @@ public class GamePlayFragment extends Fragment {
 			mMixedView.setImageResource(R.drawable.mixed);
 			break;
 		case 6:
-			sOperator.setText("+");
+			mOperator.setText("+");
 			resetColor();
 			mAddView.setImageResource(R.drawable.addition);
 			break;
 		case 7:
-			sOperator.setText("-");
+			mOperator.setText("-");
 			resetColor();
 			mSubtractView.setImageResource(R.drawable.subtraction);
 			break;
 		case 8:
-			sOperator.setText("*");
+			mOperator.setText("*");
 			resetColor();
 			mMultiplyView.setImageResource(R.drawable.multiplication);
 			break;
 		case 9:
-			sOperator.setText("/");
+			mOperator.setText("/");
 			resetColor();
 			mDivideView.setImageResource(R.drawable.division);
 			break;

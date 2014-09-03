@@ -8,4 +8,9 @@ public class GamePlayActivity extends SingleFragmentActivity {
 	protected Fragment createFragment() {
 		return new GamePlayFragment();
 	}
+
+	@Override
+	protected int setUpMain() {
+		return R.layout.activity_fragment;
+	}
 }

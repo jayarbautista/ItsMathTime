@@ -15,6 +15,10 @@ import android.widget.Toast;
 
 public class ListActivityFragment extends ListFragment {
 
+	private TextView mScoreTextView;
+	private TextView mLevelTextView;
+	private TextView mDateTextView;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,9 +31,10 @@ public class ListActivityFragment extends ListFragment {
 		}
 
 		ForListAdapter adapter = new ForListAdapter(mModelClass);
-		//if(adapter.getCount() > 5) {
-			//adapter.notifyDataSetChanged();
-		//}
+		if (adapter.getCount() == 0) {
+			Toast.makeText(getActivity(), "No records yet.", Toast.LENGTH_LONG)
+					.show();
+		}
 		setListAdapter(adapter);
 	}
 
@@ -42,27 +47,24 @@ public class ListActivityFragment extends ListFragment {
 		@SuppressLint("SimpleDateFormat")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			TextView scoreTextView;
-			TextView levelTextView;
-			TextView dateTextView;
 
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(
-						R.layout.fragment_main_odd, parent, false);
+						R.layout.score_list, parent, false);
 			}
-			
+
 			ModelClass c = getItem(position);
-			
+
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			
-			scoreTextView = (TextView) convertView.findViewById(R.id.score);
-			scoreTextView.setText(c.getScore());
-			
-			levelTextView = (TextView) convertView.findViewById(R.id.level);
-			levelTextView.setText(c.getLevel());
-			
-			dateTextView = (TextView) convertView.findViewById(R.id.date);
-			dateTextView.setText(dateFormat.format(c.getDate())+"");
+
+			mScoreTextView = (TextView) convertView.findViewById(R.id.score);
+			mScoreTextView.setText(c.getScore());
+
+			mLevelTextView = (TextView) convertView.findViewById(R.id.level);
+			mLevelTextView.setText(c.getLevel());
+
+			mDateTextView = (TextView) convertView.findViewById(R.id.date);
+			mDateTextView.setText(dateFormat.format(c.getDate()) + "");
 
 			return convertView;
 		}

@@ -10,6 +10,7 @@
     <string name="score_label">SCORE</string>
     <string name="time_label">TIME</string>
     <string name="level_label">LEVEL</string>
+    <string name="date_label">DATE and TIME</string>
     <string name="image_desc">Image</string>
     <string name="equal_sign">=</string>
     <string name="answer_here_label">Answer Here</string>

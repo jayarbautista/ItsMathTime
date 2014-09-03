@@ -9,7 +9,12 @@ public class ListActivity extends SingleFragmentActivity {
 	protected Fragment createFragment() {
 		return new ListActivityFragment();
 	}
-	
+
+	@Override
+	protected int setUpMain() {
+		return R.layout.activity_list;
+	}
+
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
