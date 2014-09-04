@@ -1,14 +1,10 @@
 package com.jayar.project.itsmathtime;
 
-import java.util.Collections;
 import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -126,7 +122,7 @@ public class GamePlayFragment extends Fragment {
 					mTimer.cancel();
 					mTimer.start();
 					mCount = 0;
-					
+
 					if (mLevelHolder % 5 == 1) {
 						sDigitCount += 1;
 						setOperands();
@@ -148,7 +144,7 @@ public class GamePlayFragment extends Fragment {
 		sDigitCount = 1;
 	}
 
-	public static int randomOperands() {
+	private int randomizeOperands() {
 		double total = 0.0;
 		Random rand = new Random();
 		int pickedNumber = 0;
@@ -167,14 +163,14 @@ public class GamePlayFragment extends Fragment {
 		return pickedNumber;
 	}
 
-	public void setOperands() {
-		mFirstOperand.setText(randomOperands() + "");
-		mSecondOperand.setText(randomOperands() + "");
+	private void setOperands() {
+		mFirstOperand.setText(randomizeOperands() + "");
+		mSecondOperand.setText(randomizeOperands() + "");
 
 		checkOperands();
 	}
 
-	public void checkOperands() {
+	private void checkOperands() {
 		int first = Integer.parseInt(mFirstOperand.getText().toString());
 		int second = Integer.parseInt(mSecondOperand.getText().toString());
 
@@ -196,7 +192,7 @@ public class GamePlayFragment extends Fragment {
 		}
 	}
 
-	public void onLoad() {
+	private void onLoad() {
 		mScore.setText("0");
 		mTimerView.setText("00:30");
 		mLevel.setText("1");
@@ -206,19 +202,13 @@ public class GamePlayFragment extends Fragment {
 		mOperator.setText("+");
 	}
 
-	public void randomOperator() {
+	private void randomizeOperator() {
 		String[] arrayOfString = { "+", "-", "*", "/" };
-		List<String> arrayList = new LinkedList<String>();
-		for (String s : arrayOfString) {
-			arrayList.add(s);
-
-			Collections.shuffle(arrayList);
-
-			mOperator.setText("" + arrayList.get(0));
-		}
+		int randomIndex = (int) (Math.random() * arrayOfString.length);
+		mOperator.setText(arrayOfString[randomIndex]);
 	}
 
-	public int checkAnswer() {
+	private int checkAnswer() {
 		int firstOperand;
 		int secondOperand;
 
@@ -264,7 +254,7 @@ public class GamePlayFragment extends Fragment {
 			mDivideView.setImageResource(R.drawable.division);
 			break;
 		case 5:
-			randomOperator();
+			randomizeOperator();
 			resetColor();
 			mMixedView.setImageResource(R.drawable.mixed);
 			break;
@@ -289,7 +279,7 @@ public class GamePlayFragment extends Fragment {
 			mDivideView.setImageResource(R.drawable.division);
 			break;
 		case 0:
-			randomOperator();
+			randomizeOperator();
 			resetColor();
 			mMixedView.setImageResource(R.drawable.mixed);
 			break;
@@ -308,13 +298,12 @@ public class GamePlayFragment extends Fragment {
 
 	public void alertGameOver() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setMessage(R.string.game_over_message)
+		builder.setTitle(R.string.game_over_message)
+				.setIcon(R.drawable.info)
 				.setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Intent i = new Intent(getActivity(),
-										ItsMathTimeActivity.class);
-								startActivity(i);
+								getActivity().finish();
 							}
 						}).setCancelable(false).show();
 	}
