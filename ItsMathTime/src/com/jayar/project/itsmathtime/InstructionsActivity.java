@@ -2,11 +2,11 @@ package com.jayar.project.itsmathtime;
 
 import android.support.v4.app.Fragment;
 
-public class ItsMathTimeActivity extends SingleFragmentActivity {
+public class InstructionsActivity extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment createFragment() {
-		return new ItsMathTimeFragment();
+		return new InstructionsFragment();
 	}
 
 	@Override
