@@ -5,6 +5,7 @@
     android:background="@drawable/instructionsbg"
     android:gravity="center_vertical|center_horizontal"
     android:layout_gravity="center"
+    android:keepScreenOn="true"
     android:orientation="vertical" >
 
 </RelativeLayout>

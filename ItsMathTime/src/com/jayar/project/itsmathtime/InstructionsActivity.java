@@ -9,6 +9,11 @@ public class InstructionsActivity extends SingleFragmentActivity {
 	protected Fragment createFragment() {
 		return new InstructionsFragment();
 	}
+
+	@Override
+	protected int setUpMain() {
+		return R.layout.activity_fragment;
+	}
 	
 	@Override
 	public void onBackPressed() {

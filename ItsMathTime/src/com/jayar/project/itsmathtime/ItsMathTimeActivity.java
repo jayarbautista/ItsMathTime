@@ -7,8 +7,12 @@ public class ItsMathTimeActivity extends SingleFragmentActivity {
 
 	@Override
 	protected Fragment createFragment() {
-		// TODO Auto-generated method stub
 		return new ItsMathTimeFragment();
+	}
+
+	@Override
+	protected int setUpMain() {
+		return R.layout.activity_fragment;
 	}
 	
 	@Override

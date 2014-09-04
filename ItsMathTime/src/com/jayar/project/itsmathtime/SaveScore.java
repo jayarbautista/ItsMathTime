@@ -17,8 +17,6 @@ public class SaveScore {
 	}
 	
 	public void saveScore(int score, int level, Date date) throws Exception {
-		if (score == 0)
-			return;
 		ModelClass mClass = new ModelClass();
 		mClass.setScore(Integer.toString(score));
 		mClass.setLevel(Integer.toString(level));

@@ -3,7 +3,6 @@ package com.jayar.project.itsmathtime;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -14,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ListActivityFragment extends ListFragment {
+
+	private TextView mScoreTextView;
+	private TextView mLevelTextView;
+	private TextView mDateTextView;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -27,42 +30,46 @@ public class ListActivityFragment extends ListFragment {
 		}
 
 		ForListAdapter adapter = new ForListAdapter(mModelClass);
-		//if(adapter.getCount() > 5) {
-			//adapter.notifyDataSetChanged();
-		//}
+		if (adapter.getCount() == 0) {
+			Toast.makeText(getActivity(),R.string.record, Toast.LENGTH_LONG)
+					.show();
+		}
 		setListAdapter(adapter);
 	}
 
 	private class ForListAdapter extends ArrayAdapter<ModelClass> {
-
+		private int maxcount = 5;
+		
 		public ForListAdapter(ArrayList<ModelClass> modelClasses) {
 			super(getActivity(), 0, modelClasses);
+		}
+
+		@Override
+		public int getCount() {
+			return Math.min(maxcount, super.getCount());
 		}
 
 		@SuppressLint("SimpleDateFormat")
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			TextView scoreTextView;
-			TextView levelTextView;
-			TextView dateTextView;
 
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(
-						R.layout.fragment_main_odd, parent, false);
+						R.layout.score_list, parent, false);
 			}
-			
+
 			ModelClass c = getItem(position);
-			
+
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			
-			scoreTextView = (TextView) convertView.findViewById(R.id.score);
-			scoreTextView.setText(c.getScore());
-			
-			levelTextView = (TextView) convertView.findViewById(R.id.level);
-			levelTextView.setText(c.getLevel());
-			
-			dateTextView = (TextView) convertView.findViewById(R.id.date);
-			dateTextView.setText(dateFormat.format(c.getDate())+"");
+
+			mScoreTextView = (TextView) convertView.findViewById(R.id.score);
+			mScoreTextView.setText(c.getScore());
+
+			mLevelTextView = (TextView) convertView.findViewById(R.id.level);
+			mLevelTextView.setText(c.getLevel());
+
+			mDateTextView = (TextView) convertView.findViewById(R.id.date);
+			mDateTextView.setText(dateFormat.format(c.getDate()) + "");
 
 			return convertView;
 		}
