@@ -27,6 +27,8 @@ public class AudioPlayer {
 			}
 		});
 		
+		mPlayer.seekTo(position);
+		
 		mPlayer.start();
 	}
 

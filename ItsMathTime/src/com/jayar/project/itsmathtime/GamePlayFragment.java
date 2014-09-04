@@ -305,25 +305,6 @@ public class GamePlayFragment extends Fragment {
 		mDivideView.setImageResource(R.drawable.division_gray);
 		mMixedView.setImageResource(R.drawable.mixed_gray);
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> issue2
-=======
-	
-	public void alertGameOver() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.game_over_message)
-               .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                   public void onClick(DialogInterface dialog, int id) {
-                       Intent i = new Intent(getActivity(), ItsMathTimeActivity.class);
-                       startActivity(i);
-                   }
-               })
-               .setCancelable(false)
-               .show();
-	}
->>>>>>> issue2
-=======
 
 	public void alertGameOver() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -337,7 +318,6 @@ public class GamePlayFragment extends Fragment {
 							}
 						}).setCancelable(false).show();
 	}
->>>>>>> issue4
 
 	public class TimerCountDown extends CountDownTimer {
 		public TimerCountDown(long startTime, long interval) {
@@ -358,11 +338,7 @@ public class GamePlayFragment extends Fragment {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-			
-=======
 
->>>>>>> issue4
 			alertGameOver();
 		}
 
