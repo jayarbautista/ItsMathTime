@@ -11,9 +11,9 @@ import android.widget.ImageButton;
 public class ItsMathTimeFragment extends Fragment {
 
 	private AudioPlayer mPlayer = new AudioPlayer();
-	ImageButton mStartButton;
-	ImageButton mInstructionButton;
-	ImageButton mScoreButton;
+	private ImageButton mStartButton;
+	private ImageButton mInstructionButton;
+	private ImageButton mScoreButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
