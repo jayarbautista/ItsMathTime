@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 public class ItsMathTimeFragment extends Fragment {
 
+	private AudioPlayer mPlayer = new AudioPlayer();
 	ImageButton mStartButton;
 	ImageButton mInstructionButton;
 	ImageButton mScoreButton;
@@ -22,6 +23,7 @@ public class ItsMathTimeFragment extends Fragment {
 		mStartButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				mPlayer.play(getActivity());
 				Intent i = new Intent(getActivity(), GamePlayActivity.class);
 				startActivity(i);
 			}
@@ -32,6 +34,7 @@ public class ItsMathTimeFragment extends Fragment {
 			
 			@Override
 			public void onClick(View arg0) {
+				mPlayer.play(getActivity());
 				Intent i = new Intent(getActivity(), InstructionsActivity.class);
 				startActivity(i);
 			}
@@ -42,6 +45,7 @@ public class ItsMathTimeFragment extends Fragment {
 			
 			@Override
 			public void onClick(View arg0) {
+				mPlayer.play(getActivity());
 				Intent i = new Intent(getActivity(), ListActivity.class);
 				startActivity(i);
 			}
@@ -50,4 +54,9 @@ public class ItsMathTimeFragment extends Fragment {
 		return v;
 	}
 
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		mPlayer.stop();
+	}
 }

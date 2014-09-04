@@ -126,11 +126,11 @@ public class GamePlayFragment extends Fragment {
 					mTimer.cancel();
 					mTimer.start();
 					mCount = 0;
-				}
-				
-				if ((mLevelHolder % 5 == 1) && (mCount == 0)) {
-					sDigitCount += 1;
-					setOperands();
+					
+					if (mLevelHolder % 5 == 1) {
+						sDigitCount += 1;
+						setOperands();
+					}
 				}
 			}
 		});
